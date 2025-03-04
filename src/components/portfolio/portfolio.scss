@@ -61,7 +61,7 @@
           max-height: 20vh;
           position: relative;
           width: 100%;
-          overflow: hidden; // Add this
+          overflow: hidden;
         }
 
         img {
@@ -109,7 +109,6 @@
         gap: 30px;
 
         @include mobile {
-          padding: 10px;
           align-items: center;
           text-align: center;
         }
@@ -127,7 +126,7 @@
           font-size: 20px;
 
           @include mobile {
-            font-size: 16px;
+            font-size: 14px;
           }
         }
 
@@ -142,6 +141,7 @@
 
         .technologies {
           margin-top: 1rem;
+          max-width: 70%;
 
           h3 {
             color: lightblue;

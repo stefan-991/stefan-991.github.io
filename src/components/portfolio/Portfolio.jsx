@@ -52,7 +52,7 @@ const items = [
     id: 2,
     title: "Custom AI Agent",
     img: ["/aiAgent3.jpg", "/aiAgent2.jpg", "/aiAgent1.jpg"],
-    desc: "Intelligent email automation system built with n8n workflow automation that manages both new and existing customer communications. The agent leverages AI to comprehend incoming emails, schedule services, and intelligently route messages to appropriate departments with automatic ticket assignment. Implemented with a vector database for knowledge retrieval, allowing the system to accurately respond to customer inquiries by referencing company procedures and FAQs. This solution significantly reduces response times, eliminates manual email sorting, and ensures consistent customer service quality while freeing up staff resources for higher-value tasks.",
+    desc: "Intelligent email automation system built with n8n workflow automation that manages both new and existing customer communications. The agent leverages AI to comprehend incoming emails, schedule services, and intelligently route messages to appropriate departments with automatic ticket assignment. Implemented with a vector database for knowledge retrieval, allowing the system to accurately respond to customer inquiries by referencing company procedures and FAQs.",
     technologies: [
       {
         name: "n8n",
@@ -148,7 +148,6 @@ const Single = ({ item }) => {
   const [initialImageIndex, setInitialImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Add layoutEffect: false to prevent the warning
   const { scrollYProgress } = useScroll({
     target: ref,
     layoutEffect: false,
@@ -157,7 +156,6 @@ const Single = ({ item }) => {
 
   const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
 
-  // Add visibility detection
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
