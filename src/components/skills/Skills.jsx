@@ -49,14 +49,14 @@ const skills = [
         description: "Standard markup language for web pages"
     },
     {
+        name: "AWS",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+        description: "Cloud computing platform offering scalable solutions for storage, networking, and application hosting."
+    },
+    {
         name: "MongoDB",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
         description: "NoSQL database for modern applications"
-    },
-    {
-        name: "MySQL",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
-        description: "Open-source relational database management system"
     },
     {
         name: "PostgreSQL",
