@@ -1,5 +1,407 @@
 @import "../../app.scss";
 
+// Portfolio Main Page
+.portfolio {
+  min-height: 100vh;
+  //max-width: 95%;
+  background-color: #0f172a;
+  position: relative;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #0f172a;
+    border-bottom: 1px solid #475569;
+  }
+
+  &__header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #93c5fd;
+    margin-bottom: 1rem;
+
+    @include mobile {
+      font-size: 2rem;
+    }
+  }
+
+  &__progress-bar {
+    height: 8px;
+    background-color: white;
+    border-radius: 9999px;
+    margin: 0 auto;
+    max-width: 28rem;
+  }
+
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+}
+
+// Portfolio Card
+.portfolio-card {
+  background-color: #1e293b;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #475569;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #334155;
+    transform: translateY(-4px);
+  }
+
+  &__image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      .portfolio-card__image {
+        transform: scale(1.05);
+      }
+
+      .portfolio-card__overlay {
+        opacity: 0.2;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+
+  &__description {
+    color: #d1d5db;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #1d4ed8;
+    }
+  }
+}
+
+.tech-tag {
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #93c5fd;
+  font-size: 0.75rem;
+  border-radius: 9999px;
+
+  &--more {
+    background-color: rgba(75, 85, 99, 0.2);
+    color: #d1d5db;
+  }
+}
+
+// Project Detail Page
+.project-detail {
+  min-height: 100vh;
+  background-color: #0f172a;
+  color: white;
+
+  &__container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  &__back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #93c5fd;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #bfdbfe;
+    }
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    @include mobile {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: #d1d5db;
+  }
+
+  &__main-image {
+    margin-bottom: 3rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    border-radius: 12px;
+
+    @include mobile {
+      height: 12rem;
+    }
+  }
+
+  &__image-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+}
+
+.image-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #6b7280;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &--active {
+    background-color: #3b82f6;
+  }
+}
+
+// Project Sections
+.project-section {
+  margin-bottom: 3rem;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+
+    &--blue {
+      color: #93c5fd;
+    }
+
+    &--red {
+      color: #fca5a5;
+    }
+
+    &--green {
+      color: #86efac;
+    }
+
+    &--purple {
+      color: #c4b5fd;
+    }
+
+    &--yellow {
+      color: #fcd34d;
+    }
+
+    @include mobile {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__text {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #d1d5db;
+    margin-bottom: 2rem;
+  }
+
+  &__image {
+    margin-bottom: 2rem;
+  }
+}
+
+.section-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: 8px;
+
+  @include mobile {
+    height: 8rem;
+  }
+}
+
+// Features Grid
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: #1e293b;
+  border-radius: 8px;
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    background-color: #60a5fa;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    color: #d1d5db;
+    line-height: 1.5;
+  }
+}
+
+// Technologies Grid
+.technologies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1.5rem;
+
+  @include mobile {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    .tech-item__icon {
+      background-color: #334155;
+    }
+
+    .tech-icon {
+      opacity: 1;
+    }
+
+    .tech-item__name {
+      color: white;
+    }
+  }
+
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+    background-color: #1e293b;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+
+  &__name {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    text-align: center;
+    transition: color 0.2s ease;
+  }
+}
+
+.tech-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(100%);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+/*
+@import "../../app.scss";
+
 .portfolio {
   position: relative;
 
@@ -231,3 +633,4 @@
     }
   }
 }
+  */

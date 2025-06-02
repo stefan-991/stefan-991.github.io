@@ -1,5 +1,5 @@
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y; //mandatory;
   scroll-behavior: smooth;
 }
 
@@ -20,11 +20,32 @@ a {
   color: inherit;
 }
 
-section {
+// Only apply 100vh to main page sections, not modal sections
+section:not(.project-modal section):not(.project-modal *) {
+  height: 100vh;
+  max-width: 100vw;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+// Alternative approach - target only direct children of body or main containers
+body>section,
+#root>section,
+.app>section {
   height: 100vh;
   width: 100vw;
   scroll-snap-align: start;
   overflow: hidden;
+}
+
+// Ensure modal sections are excluded and use auto height
+.project-modal section,
+.project-modal .project-section {
+  height: auto !important;
+  width: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  scroll-snap-align: unset !important;
 }
 
 @mixin mobile {

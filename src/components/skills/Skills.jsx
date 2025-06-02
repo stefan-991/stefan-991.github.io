@@ -142,6 +142,11 @@ const tools = [
         description: "Workflow automation tool"
     },
     {
+        name: "Cursor",
+        icon: "/cursor.svg",
+        description: "AI-powered code editor for enhanced development productivity"
+    },
+    {
         name: "LLMs",
         icon: "/ai.svg",
         description: "Large Language Models for AI applications"
@@ -168,14 +173,9 @@ const IconGrid = ({ items }) => {
 const Skills = () => {
     return (
         <div className="skills">
-            <motion.div
-                className="title"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
+            <div className="title">
                 <h1>Skills & Tools</h1>
-            </motion.div>
+            </div>
 
             <div className="content">
                 <div className="section">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import './ImageModal.scss';
 
 const ImageModal = ({ images, isOpen, onClose, initialIndex = 0 }) => {
     const [currentIndex, setCurrentIndex] = useState(initialIndex);
@@ -9,6 +10,10 @@ const ImageModal = ({ images, isOpen, onClose, initialIndex = 0 }) => {
             onClose();
         }
     }, [onClose]);
+
+    useEffect(() => {
+        setCurrentIndex(initialIndex);
+    }, [initialIndex]);
 
     useEffect(() => {
         if (isOpen) {
@@ -31,129 +36,52 @@ const ImageModal = ({ images, isOpen, onClose, initialIndex = 0 }) => {
         setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     };
 
-    if (!isOpen) return null;
+    if (!isOpen || !images || images.length === 0) return null;
 
     return (
         <div
+            className="image-modal"
             data-backdrop="true"
             onClick={handleClickOutside}
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 998,
-                background: 'rgba(0, 0, 0, 0.9)',
-            }}
         >
-            {/* Card container */}
-            <div
-                style={{
-                    position: 'relative',
-                    backgroundColor: '#1a1a1a',
-                    borderRadius: '8px',
-                    padding: '40px 10px', // Reduced horizontal padding
-                    maxWidth: '90vw',
-                    maxHeight: '90vh',
-                    width: 'auto',
-                    height: 'auto',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
-                {/* Close button */}
+            <div className="image-modal__container">
                 <button
+                    className="image-modal__close"
                     onClick={onClose}
-                    style={{
-                        position: 'absolute',
-                        right: '12px',
-                        top: '12px',
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        color: 'white',
-                        zIndex: 999,
-                    }}
+                    aria-label="Close modal"
                 >
                     <X size={24} />
                 </button>
 
-                {/* Previous button */}
-                <button
-                    onClick={handlePrevious}
-                    style={{
-                        position: 'absolute',
-                        left: '8px',
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        color: 'white',
-                        padding: '8px',
-                        zIndex: 999,
-                    }}
-                >
-                    <ChevronLeft size={40} />
-                </button>
+                {images.length > 1 && (
+                    <button
+                        className="image-modal__nav image-modal__nav--prev"
+                        onClick={handlePrevious}
+                        aria-label="Previous image"
+                    >
+                        <ChevronLeft size={40} />
+                    </button>
+                )}
 
-                {/* Image container */}
-                <div style={{
-                    position: 'relative',
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 40px', // Reduced margin for arrows
-                }}>
+                <div className="image-modal__content">
                     <img
                         src={images[currentIndex]}
                         alt={`Image ${currentIndex + 1}`}
-                        style={{
-                            maxWidth: '100%',
-                            maxHeight: '70vh',
-                            objectFit: 'contain',
-                        }}
+                        className="image-modal__image"
                     />
                 </div>
 
-                {/* Next button */}
-                <button
-                    onClick={handleNext}
-                    style={{
-                        position: 'absolute',
-                        right: '8px',
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        color: 'white',
-                        padding: '8px',
-                        zIndex: 999,
-                    }}
-                >
-                    <ChevronRight size={40} />
-                </button>
+                {images.length > 1 && (
+                    <button
+                        className="image-modal__nav image-modal__nav--next"
+                        onClick={handleNext}
+                        aria-label="Next image"
+                    >
+                        <ChevronRight size={40} />
+                    </button>
+                )}
 
-                {/* Image counter */}
-                <div style={{
-                    position: 'absolute',
-                    bottom: '16px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    color: 'white',
-                    background: 'rgba(0, 0, 0, 0.5)',
-                    padding: '4px 12px',
-                    borderRadius: '12px',
-                    fontSize: '14px',
-                }}>
+                <div className="image-modal__counter">
                     {currentIndex + 1} / {images.length}
                 </div>
             </div>

@@ -49,7 +49,7 @@ const Hero = () => {
         >
           <motion.h2 variants={textVariants}>STEFAN IVKOVIC</motion.h2>
           <motion.h1 variants={textVariants}>
-            Web Developer<br /> Data and Automation Expert
+            Full-Stack Developer<br /> Data and Automation Expert
           </motion.h1>
           <motion.div variants={textVariants} className="buttons">
             <motion.a href="#Portfolio" className="button" variants={textVariants}>
@@ -73,7 +73,7 @@ const Hero = () => {
         initial="initial"
         animate="animate"
       >
-        Data Analysis Consultations Process Automation
+        Apps Automation Data
       </motion.div>
       <div className="imageContainer">
         <img src="/avatar.png" alt="" />

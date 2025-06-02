@@ -29,6 +29,11 @@
       object-fit: cover;
       border-radius: 50%;
       zoom: 50%;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
     }
   }
 
@@ -41,29 +46,61 @@
 
     .textContainer {
       width: 50%;
-      height: 100%;
+      height: 95%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 3rem;
+      margin: 2rem 0;
+      position: relative;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
 
       @include mobile {
         height: 50%;
-        width: 100%;
+        width: 95%;
         gap: 20px;
         align-items: center;
         text-align: center;
+        margin: 1rem;
+        padding: 2rem;
+        border-radius: 12px;
       }
 
       h2 {
         font-size: 30px;
         color: lightblue;
         letter-spacing: 10px;
+        position: relative;
+        z-index: 1;
+        transition: color 0.2s ease;
+
+        .textContainer:hover & {
+          color: #add8e6;
+        }
       }
 
       h1 {
-        font-size: 70px;
+        font-size: 60px;
         user-select: none;
+        color: white;
+        position: relative;
+        z-index: 1;
+        transition: color 0.2s ease;
+
+        .textContainer:hover & {
+          color: #ffffff;
+          text-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
 
         @include mobile {
           font-size: 36px;
@@ -72,31 +109,43 @@
 
       .buttons {
         display: flex;
-        gap: 20x;
+        gap: 20px;
+        position: relative;
+        z-index: 1;
 
         button,
         .button {
           padding: 20px;
-          border: 1px solid white;
+          border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 10px;
-          background-color: transparent;
+          background: rgba(255, 255, 255, 0.05);
           color: white;
           cursor: pointer;
-          font-weight: 300;
+          font-weight: 500;
           text-decoration: none;
           font-size: 16px;
           margin-right: 20px;
           display: inline-block;
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
+          position: relative;
 
           &:hover {
-            background-color: rgba(173, 216, 230, 0.3);
+            background: rgba(173, 216, 230, 0.15);
+            border-color: rgba(173, 216, 230, 0.3);
+            box-shadow: 0 4px 12px rgba(173, 216, 230, 0.2);
           }
         }
       }
 
       img {
         width: 50px;
+        transition: transform 0.2s ease;
+        position: relative;
+        z-index: 1;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
       }
     }
   }
